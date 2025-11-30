@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
+import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import java.lang.reflect.Method;
 import java.util.List;
@@ -26,10 +27,13 @@ import java.util.List;
 @Component
 public class WhitelistFilterJoinPoint {
 
-    @Resource
+    @Resource(name = "whitelist")
     private List<String> whitelist;
-    @Autowired
-    private WhitelistAutoConfig whitelistAutoConfig;
+
+    @PostConstruct
+    public void init() {
+        System.out.println("WhitelistAspect 被加载到 Spring 容器中");
+    }
 
     @Pointcut("@annotation(cn.zeke.middleware.whitelist.annotation.WhitelistFilter)")
     public void whitelistPointcut() {
@@ -37,6 +41,7 @@ public class WhitelistFilterJoinPoint {
 
     @Around("whitelistPointcut()")
     public Object doRouter(ProceedingJoinPoint joinPoint) throws Throwable {
+        System.out.println("进入切片逻辑");
         // 获取方法
         MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
         // 这里不能通过直接 joinPoint.getMethod() 获得目标方法，因为可能返回接口的方法
