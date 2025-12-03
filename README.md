@@ -14,7 +14,7 @@ Each directory in this repository corresponds to an independent project. The **`
 ---
 
 ## Class Diagram
-![Class Diagram](Image URL or Path)
+![Class Diagram](https://github.com/ZeyuZhao-git/middlewares/blob/main/resources/class_diagram.png)
 
 ## How to Use
 
