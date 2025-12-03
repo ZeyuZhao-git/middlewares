@@ -13,6 +13,9 @@ Each directory in this repository corresponds to an independent project. The **`
 
 ---
 
+## Class Diagram
+![Class Diagram](Image URL or Path)
+
 ## How to Use
 
 ### Step 1. Build and Install Locally
