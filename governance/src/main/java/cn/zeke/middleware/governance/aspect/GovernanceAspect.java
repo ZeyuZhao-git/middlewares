@@ -37,7 +37,7 @@ public class GovernanceAspect {
     }
 
     @Around("governancePointcut()")
-    public Object around(ProceedingJoinPoint point) throws Throwable {
+    public Object doGovernance(ProceedingJoinPoint point) throws Throwable {
         Method method = getMethod(point);
         Annotation[] annotations = method.getAnnotations();
 
@@ -56,7 +56,7 @@ public class GovernanceAspect {
     }
 
     @Around("hystrixPointCut()")
-    public Object doRouter(ProceedingJoinPoint joinPoint) throws Throwable {
+    public Object doHystrix(ProceedingJoinPoint joinPoint) throws Throwable {
         Method method = getMethod(joinPoint);
         DoHystrix doHystrix = method.getAnnotation(DoHystrix.class);
         HystrixService valveService = new HystrixService(doHystrix.groupName(),
