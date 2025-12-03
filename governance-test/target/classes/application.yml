@@ -1,0 +1,6 @@
+server:
+  port: 8089
+
+# 白名单用户
+zeke:
+  whitelist: "aaa,111,xiaofuge"
